@@ -25,28 +25,33 @@ const PhotoAlbum: React.FC<PhotoAlbumProps> = ({ photos }) => {
                 <CardTitle className="text-3xl font-bold text-pink-700 text-center">Nossas Memórias em Fotos</CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {photos.map((photo, index) => (
-                        <div
-                            key={index}
-                            className="relative w-full h-48 cursor-pointer overflow-hidden rounded-lg shadow-md hover:scale-105 transition-transform duration-200"
-                            onClick={() => setSelectedPhotoIndex(index)}
-                        >
-                            <Image
-                                src={photo.src}
-                                alt={photo.alt}
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-lg"
-                            />
-                            {photo.caption && (
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white text-xs">
-                                    {photo.caption}
+                <Carousel className="w-full">
+                    <CarouselContent>
+                        {photos.map((photo, index) => (
+                            <CarouselItem key={index}>
+                                <div
+                                    className="relative w-full h-72 sm:h-96 cursor-pointer overflow-hidden rounded-lg shadow-md group"
+                                    onClick={() => setSelectedPhotoIndex(index)}
+                                >
+                                    <Image
+                                        src={photo.src}
+                                        alt={photo.alt}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="rounded-lg transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                    {photo.caption && (
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            {photo.caption}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+                </Carousel>
 
                 <Dialog open={selectedPhotoIndex !== null} onOpenChange={() => setSelectedPhotoIndex(null)}>
                     <DialogContent className="max-w-4xl p-0 border-none bg-transparent">
