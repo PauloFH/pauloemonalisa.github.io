@@ -36,7 +36,7 @@ const TimeTogether: React.FC<TimeTogetherProps> = ({ startDate }) => {
     return (
         <Card className="w-full max-w-2xl mx-auto text-center bg-pink-50 shadow-lg">
             <CardHeader>
-                <CardTitle className="text-3xl font-bold text-pink-700">Nosso Tempo Juntos!</CardTitle>
+                <CardTitle className="text-3xl font-bold text-blue-900 text-center"></CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-pink-600">
                 <div className="flex flex-col items-center">

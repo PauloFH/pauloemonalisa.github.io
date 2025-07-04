@@ -9,7 +9,7 @@ const WhyILoveYou: React.FC<WhyILoveYouProps> = ({ reasons }) => {
     return (
         <Card className="w-full max-w-2xl mx-auto bg-pink-50 shadow-lg">
             <CardHeader>
-                <CardTitle className="text-3xl font-bold text-pink-700 text-center">Por Que Eu Te Amo</CardTitle>
+                <CardTitle className="text-3xl font-bold text-blue-900 text-center">Por que Eu Te Amo</CardTitle>
             </CardHeader>
             <CardContent className="text-lg text-pink-800 space-y-3">
                 <p className="text-center italic mb-4">

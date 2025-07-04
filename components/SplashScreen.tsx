@@ -39,7 +39,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onDismiss }) => {
                     ❤️
                 </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center text-center text-white text-2xl md:text-3xl font-bold px-4">
-                    Clique para revelar nosso amor!
+
                 </div>
             </motion.div>
         </motion.div>
