@@ -26,7 +26,7 @@ jobs:
         run: yarn install
 
       - name: Build project 🏗️
-        run: next build
+        run: yarn build
 
       - name: Add .nojekyll file 📄
         run: touch out/.nojekyll
