@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
@@ -32,7 +32,7 @@ const PhotoAlbum: React.FC<PhotoAlbumProps> = ({ photos }) => {
 
     const renderPhotoThumbnail = (photo: string, index: number) => (
         <div 
-            className="relative w-full h-48 cursor-pointer overflow-hidden rounded-lg shadow-md group bg-pink-100"
+            className="relative w-full h-72 cursor-pointer overflow-hidden rounded-lg shadow-md group bg-pink-100" // Altura aumentada para h-72
             onClick={() => openDialog(index)}
         >
             <Image
@@ -46,7 +46,7 @@ const PhotoAlbum: React.FC<PhotoAlbumProps> = ({ photos }) => {
     );
 
     return (
-        <Card className="w-full max-w-4xl mx-auto bg-pink-50 shadow-lg rounded-lg">
+        <Card className="w-full max-w-6xl mx-auto bg-pink-50 shadow-lg rounded-lg">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold text-blue-900 text-center">Nossas Memórias</CardTitle>
             </CardHeader>
@@ -57,7 +57,7 @@ const PhotoAlbum: React.FC<PhotoAlbumProps> = ({ photos }) => {
                 >
                     <CarouselContent className="-ml-4">
                         {photos.map((photo, index) => (
-                            <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                            <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                                 {renderPhotoThumbnail(photo, index)}
                             </CarouselItem>
                         ))}
