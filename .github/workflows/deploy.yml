@@ -23,10 +23,10 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies 📦
-        run: npm install
+        run: yarn install
 
       - name: Build project 🏗️
-        run: npm build
+        run: next build
 
       - name: Add .nojekyll file 📄
         run: touch out/.nojekyll

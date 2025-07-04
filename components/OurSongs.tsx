@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Play, Pause, SkipBack, SkipForward } from 'lucide-react';
+import React, {useEffect, useRef, useState} from 'react';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
+import {Button} from '@/components/ui/button';
+import {Pause, Play, SkipBack, SkipForward} from 'lucide-react';
 
 const musicList = [
     { file: 'A Cor É Rosa - Silva.mp3', title: 'A Cor É Rosa', artist: 'Silva' },
@@ -32,7 +32,7 @@ const OurSongs: React.FC = () => {
                 const searchTerm = encodeURIComponent(`${currentSong.title} ${currentSong.artist}`);
                 const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}&entity=song&limit=1`);
                 const data = await response.json();
-                
+
                 if (data.results && data.results.length > 0) {
                     const artworkUrl = data.results[0].artworkUrl100.replace('100x100', '600x600');
                     setAlbumArt(artworkUrl);
@@ -63,7 +63,7 @@ const OurSongs: React.FC = () => {
             audio.removeEventListener('timeupdate', updateProgress);
             audio.removeEventListener('ended', handleTrackEnd);
         };
-    }, [currentTrack]);
+    }, [currentSong.artist, currentSong.title, currentTrack]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -93,8 +93,7 @@ const OurSongs: React.FC = () => {
 
         const progressBar = e.currentTarget;
         const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
-        const newTime = (clickPosition / progressBar.offsetWidth) * audio.duration;
-        audio.currentTime = newTime;
+        audio.currentTime = (clickPosition / progressBar.offsetWidth) * audio.duration;
     };
 
     return (
@@ -103,13 +102,14 @@ const OurSongs: React.FC = () => {
                 <CardTitle className="text-3xl font-bold">Nossas Músicas</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col items-center space-y-4 p-6">
-                <img 
-                    src={albumArt} 
-                    alt="Capa do Álbum" 
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src={albumArt}
+                    alt="Capa do Álbum"
                     className="w-64 h-64 object-cover rounded-lg shadow-md transition-all duration-500"
                     onError={() => setAlbumArt('/window.svg')}
                 />
-                
+
                 <div className="w-full text-center pt-4">
                     <h3 className="text-xl font-semibold truncate">{currentSong.title}</h3>
                     <p className="text-md text-blue-700">{currentSong.artist}</p>

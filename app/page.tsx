@@ -1,13 +1,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import TimeTogether from '@/components/TimeTogether';
-import PhotoAlbum from '@/components/PhotoAlbum';
-import OurSongs from '@/components/OurSongs';
-import WhyILoveYou from '@/components/WhyILoveYou';
-import DistanceOfLove from '@/components/DistanceOfLove';
-import FallingElements from '@/components/FallingElements';
-import HomeClient from './HomeClient'; // Componente de cliente para interatividade
+
+import HomeClient from './HomeClient';
 
 export default function Home() {
   const startDate = '2024-06-23T14:00:00';
